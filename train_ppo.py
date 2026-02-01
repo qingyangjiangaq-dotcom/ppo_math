@@ -28,10 +28,10 @@ class TrainConfig:
     ppo_steps: int = 1000
     batch_size: int = 4
     mini_batch_size: int = 2
-    gradient_accumulation_steps: int = 2
+    gradient_accumulation_steps: int = 16  # 4 * 16 = 64 有效 batch size，更稳定的梯度
     ppo_epochs: int = 2
-    learning_rate: float = 1e-5
-    init_kl_coef: float = 0.2
+    learning_rate: float = 1e-6  # 降低学习率防止参数乱跳
+    init_kl_coef: float = 0.2  # 保持 KL 惩罚防止语言崩坏
     target_kl: float = 6.0
     seed: int = 42
     log_dir: str = "runs/ppo_math"

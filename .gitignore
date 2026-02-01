@@ -12,8 +12,7 @@ __pycache__/
 # Caches
 .hf_cache/
 
-# Outputs / runs
-outputs/
+# Runs
 runs/
 
 # OS
