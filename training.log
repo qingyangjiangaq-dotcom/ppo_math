@@ -1,0 +1,20 @@
+Downloading readme: 0.00B [00:00, ?B/s]Downloading readme: 642B [00:00, 4.96MB/s]
+Downloading data:   0%|          | 0.00/613k [00:00<?, ?B/s]Downloading data: 100%|██████████| 613k/613k [00:01<00:00, 345kB/s]Downloading data: 100%|██████████| 613k/613k [00:01<00:00, 345kB/s]
+Downloading data:   0%|          | 0.00/3.37M [00:00<?, ?B/s]Downloading data: 100%|██████████| 3.37M/3.37M [00:01<00:00, 2.45MB/s]Downloading data: 100%|██████████| 3.37M/3.37M [00:01<00:00, 2.45MB/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 45824.01 examples/s]
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 720403.45 examples/s]
+Map:   0%|          | 0/7473 [00:00<?, ? examples/s]Map:  36%|███▌      | 2694/7473 [00:00<00:00, 26743.39 examples/s]Map:  72%|███████▏  | 5382/7473 [00:00<00:00, 26820.41 examples/s]Map: 100%|██████████| 7473/7473 [00:00<00:00, 26528.59 examples/s]
+Map:   0%|          | 0/1319 [00:00<?, ? examples/s]Map: 100%|██████████| 1319/1319 [00:00<00:00, 27096.74 examples/s]
+WARNING:root:A <class 'transformers.models.qwen2.modeling_qwen2.Qwen2ForCausalLM'> model is loaded from 'Qwen/Qwen2.5-0.5B-Instruct', and no v_head weight is found. This IS expected if you are not resuming PPO training.
+Traceback (most recent call last):
+  File "/home/uincy/projects/mywsl/ppo_math/train_ppo.py", line 724, in <module>
+    main()
+  File "/home/uincy/projects/mywsl/ppo_math/train_ppo.py", line 379, in main
+    ppo_config = PPOConfig(
+                 ^^^^^^^^^^
+  File "<string>", line 51, in __init__
+  File "/home/uincy/projects/mywsl/ppo_math/.venv/lib/python3.11/site-packages/trl/trainer/ppo_config.py", line 160, in __post_init__
+    exact_div(
+  File "/home/uincy/projects/mywsl/ppo_math/.venv/lib/python3.11/site-packages/trl/trainer/utils.py", line 690, in exact_div
+    raise ValueError(f"{custom_error_message}, inexact division: {a} / {b} = {a / b}")
+ValueError: `batch_size` must be a multiple of `mini_batch_size * gradient_accumulation_steps`, inexact division: 4 / 32 = 0.125

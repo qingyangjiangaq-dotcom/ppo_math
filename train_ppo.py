@@ -14,6 +14,7 @@ from trl import AutoModelForCausalLMWithValueHead, PPOConfig, PPOTrainer, create
 
 from utils import extract_last_number, normalize_answer, extract_gold_answer
 from reward import parse_pred, compute_reward
+from pretty_printer import print_training_step, Colors
 
 
 @dataclass
@@ -26,9 +27,9 @@ class TrainConfig:
     max_prompt_length: int = 256
     max_new_tokens: int = 512
     ppo_steps: int = 1000
-    batch_size: int = 4
+    batch_size: int = 8
     mini_batch_size: int = 2
-    gradient_accumulation_steps: int = 16  # 4 * 16 = 64 有效 batch size，更稳定的梯度
+    gradient_accumulation_steps: int = 4  # 8 / (2 * 4) = 1, 有效 batch size = 8, 稳定且省显存
     ppo_epochs: int = 2
     learning_rate: float = 1e-6  # 降低学习率防止参数乱跳
     init_kl_coef: float = 0.2  # 保持 KL 惩罚防止语言崩坏
@@ -654,6 +655,10 @@ def main():
             metrics_path = os.path.join(cfg.output_dir, "metrics.jsonl")
             with open(metrics_path, "a") as f:
                 f.write(json.dumps(metrics, ensure_ascii=False) + "\n")
+
+            if step % 10 == 0:
+                questions = [row["question"] for row in batch]
+                print_training_step(step, metrics, responses, preds, golds, rewards, questions)
 
             print(
                 " | ".join(
