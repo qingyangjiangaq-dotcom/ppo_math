@@ -1,0 +1,11 @@
+accelerate==0.33.0
+bitsandbytes==0.43.1
+datasets==2.20.0
+evaluate==0.4.2
+numpy==1.26.4
+peft==0.12.0
+pyyaml==6.0.2
+tensorboard==2.17.1
+torch==2.4.1
+transformers==4.45.2
+trl==0.9.6

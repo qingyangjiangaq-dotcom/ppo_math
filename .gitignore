@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Virtual environments
+.venv/
+
+# Caches
+.hf_cache/
+
+# Outputs / runs
+outputs/
+runs/
+
+# OS
+.DS_Store
+Thumbs.db
